@@ -1,5 +1,7 @@
-from collections import Counter
-import numpy as np
+from python import collections 
+from python import numpy as np
+
+Counter = collections.Counter
 
 def _adult(cc_lst):
 

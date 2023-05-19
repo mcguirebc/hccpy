@@ -1,6 +1,9 @@
-import csv
-import re
-from pkg_resources import resource_filename as rscfn
+from python import csv
+from python import re
+from python import pkg_resources 
+
+rscfn = pkg_resources.resource_filename
+
 
 def padded_cc(cc):
     cc = cc.replace(".","_")

@@ -1,10 +1,14 @@
-import numpy as np
-from collections import Counter
-import hccpy.utils_hhs as utils
-import hccpy._AGESEXV6 as AGESEXV6 # age/sex variables
-import hccpy._I0V05ED2 as I0V05ED2 # age/sex edits
-import hccpy._V0519F3M as V0519F3M # interactions
-import hccpy._V0519F3P as V0519F3P # risk coefn 
+import python
+from python import numpy as np
+from python import collections
+import utils_hhs as utils
+import _AGESEXV6 as AGESEXV6 # age/sex variables
+import _I0V05ED2 as I0V05ED2 # age/sex edits
+import _V0519F3M as V0519F3M # interactions
+import _V0519F3P as V0519F3P # risk coefn 
+
+
+Counter = collections.Counter
 
 class HHSHCCEngine:
 
@@ -96,8 +100,8 @@ class HHSHCCEngine:
         # rxc
         cc_dct.update({ndc:self.ndc2rxc[ndc] for ndc in rx_lst
                         if ndc in self.ndc2rxc})
-        cc_dct.update({hcpcs:self.hcpcs2rxc[pr] for pr in pr_lst
-                        if pr in self.hcpcs2rxc})
+        cc_dct.update({hcpc:self.hcpcs2rxc[hcpc] for hcpc in pr_lst
+                        if hcpc in self.hcpcs2rxc})
 
         cc_dct = I0V05ED2.apply_agesex_edits(cc_dct, age, sex)
         hcc_lst_0 = self._apply_hierarchy(cc_dct, age, sex)
